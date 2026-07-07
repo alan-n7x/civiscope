@@ -2,7 +2,6 @@ from fastapi.testclient import TestClient
 
 from civiscope.main import app
 
-
 client = TestClient(app)
 
 
@@ -11,3 +10,13 @@ def test_read_root():
 
     assert response.status_code == 200
     assert response.json() == {"Hello": "World"}
+
+
+def test_read_item():
+    response = client.get("/items/10?q=notebook")
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "item_id": 10,
+        "q": "notebook",
+    }
