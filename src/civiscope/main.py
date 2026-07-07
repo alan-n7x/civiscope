@@ -39,3 +39,7 @@ async def read_item(item_id: int, q: str | None = None):
     )
 
     return {"item_id": item_id, "q": q}
+
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}

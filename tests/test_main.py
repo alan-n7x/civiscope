@@ -20,3 +20,9 @@ def test_read_item():
         "item_id": 10,
         "q": "notebook",
     }
+
+def test_health_check():
+    response = client.get("/health")
+
+    assert response.status_code == 200
+    assert response.json() == {"status": "ok"}
