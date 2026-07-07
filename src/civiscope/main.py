@@ -40,6 +40,12 @@ async def read_item(item_id: int, q: str | None = None):
 
     return {"item_id": item_id, "q": q}
 
+
 @app.get("/health")
 async def health_check():
     return {"status": "ok"}
+
+
+@app.get("/version")
+async def version():
+    return {"name": "civiscope", "version": "0.1.0"}
